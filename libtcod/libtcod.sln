@@ -4,8 +4,14 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libtcod", "libtcod.vcxproj", "{5A6215FD-559B-4AEF-89BE-CDA15CBBEA7B}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "worldgen", "samples\worldgen\worldgen\worldgen.vcxproj", "{EE93A5F9-AE34-4F21-AA8F-9D1CE4DFD3EA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5A6215FD-559B-4AEF-89BE-CDA15CBBEA7B} = {5A6215FD-559B-4AEF-89BE-CDA15CBBEA7B}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rlTut", "..\rlTut\rlTut.vcxproj", "{42F183A0-4FD5-4946-A1DE-24724D01A2B7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5A6215FD-559B-4AEF-89BE-CDA15CBBEA7B} = {5A6215FD-559B-4AEF-89BE-CDA15CBBEA7B}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
