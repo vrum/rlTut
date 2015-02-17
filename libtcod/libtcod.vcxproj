@@ -1,0 +1,334 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{5A6215FD-559B-4AEF-89BE-CDA15CBBEA7B}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>D:\RL\libtcod\include;D:\RL\libtcod\include\gui;D:\RL\SDL-1.2.15\include;D:\RL\zlib-1.2.8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;LIBTCOD_EXPORTS;TCOD_SDL;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>SDL.lib;OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\RL\SDL-1.2.15\lib\x86;D:\RL\zlib-1.2.8\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\RL\libtcod\include;D:\RL\libtcod\include\gui;D:\RL\SDL-1.2.15\include;D:\RL\zlib-1.2.8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;LIBTCOD_EXPORTS;TCOD_SDL;NO_OPENGL;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>SDL.lib;OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\RL\SDL-1.2.15\lib\x86;D:\RL\zlib-1.2.8\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="include\bresenham.h" />
+    <ClInclude Include="include\bresenham.hpp" />
+    <ClInclude Include="include\bsp.h" />
+    <ClInclude Include="include\bsp.hpp" />
+    <ClInclude Include="include\gui\button.hpp" />
+    <ClInclude Include="include\color.h" />
+    <ClInclude Include="include\color.hpp" />
+    <ClInclude Include="include\console.h" />
+    <ClInclude Include="include\console.hpp" />
+    <ClInclude Include="include\console_types.h" />
+    <ClInclude Include="include\gui\container.hpp" />
+    <ClInclude Include="src\zlib\crc32.h" />
+    <ClInclude Include="src\zlib\deflate.h" />
+    <ClInclude Include="include\gui\flatlist.hpp" />
+    <ClInclude Include="include\fov.h" />
+    <ClInclude Include="include\fov.hpp" />
+    <ClInclude Include="include\fov_types.h" />
+    <ClInclude Include="include\gui\gui.hpp" />
+    <ClInclude Include="src\zlib\gzguts.h" />
+    <ClInclude Include="include\gui\hbox.hpp" />
+    <ClInclude Include="include\heightmap.h" />
+    <ClInclude Include="include\heightmap.hpp" />
+    <ClInclude Include="include\howto.hpp" />
+    <ClInclude Include="include\image.h" />
+    <ClInclude Include="include\image.hpp" />
+    <ClInclude Include="include\gui\image.hpp" />
+    <ClInclude Include="src\zlib\inffast.h" />
+    <ClInclude Include="src\zlib\inffixed.h" />
+    <ClInclude Include="src\zlib\inflate.h" />
+    <ClInclude Include="src\zlib\inftrees.h" />
+    <ClInclude Include="include\gui\label.hpp" />
+    <ClInclude Include="include\lex.h" />
+    <ClInclude Include="include\lex.hpp" />
+    <ClInclude Include="include\libtcod.h" />
+    <ClInclude Include="include\libtcod.hpp" />
+    <ClInclude Include="include\libtcod_int.h" />
+    <ClInclude Include="include\list.h" />
+    <ClInclude Include="include\list.hpp" />
+    <ClInclude Include="src\png\lodepng.h" />
+    <ClInclude Include="include\mersenne.h" />
+    <ClInclude Include="include\mersenne.hpp" />
+    <ClInclude Include="include\mersenne_types.h" />
+    <ClInclude Include="include\mouse.h" />
+    <ClInclude Include="include\mouse.hpp" />
+    <ClInclude Include="include\mouse_types.h" />
+    <ClInclude Include="include\namegen.h" />
+    <ClInclude Include="include\namegen.hpp" />
+    <ClInclude Include="include\noise.h" />
+    <ClInclude Include="include\noise.hpp" />
+    <ClInclude Include="include\noise_defaults.h" />
+    <ClInclude Include="include\parser.h" />
+    <ClInclude Include="include\parser.hpp" />
+    <ClInclude Include="include\path.h" />
+    <ClInclude Include="include\path.hpp" />
+    <ClInclude Include="include\gui\radiobutton.hpp" />
+    <ClInclude Include="include\gui\slider.hpp" />
+    <ClInclude Include="include\gui\statusbar.hpp" />
+    <ClInclude Include="include\sys.h" />
+    <ClInclude Include="include\sys.hpp" />
+    <ClInclude Include="include\gui\textbox.hpp" />
+    <ClInclude Include="include\gui\togglebutton.hpp" />
+    <ClInclude Include="include\gui\toolbar.hpp" />
+    <ClInclude Include="include\tree.h" />
+    <ClInclude Include="include\tree.hpp" />
+    <ClInclude Include="src\zlib\trees.h" />
+    <ClInclude Include="include\txtfield.h" />
+    <ClInclude Include="include\txtfield.hpp" />
+    <ClInclude Include="include\gui\vbox.hpp" />
+    <ClInclude Include="include\gui\widget.hpp" />
+    <ClInclude Include="include\wrappers.h" />
+    <ClInclude Include="src\zlib\zconf.h" />
+    <ClInclude Include="include\zip.h" />
+    <ClInclude Include="include\zip.hpp" />
+    <ClInclude Include="src\zlib\zlib.h" />
+    <ClInclude Include="src\zlib\zutil.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\zlib\adler32.c" />
+    <ClCompile Include="src\bresenham.cpp" />
+    <ClCompile Include="src\bresenham_c.c" />
+    <ClCompile Include="src\bsp.cpp" />
+    <ClCompile Include="src\bsp_c.c" />
+    <ClCompile Include="src\color.cpp" />
+    <ClCompile Include="src\color_c.c" />
+    <ClCompile Include="src\zlib\compress.c" />
+    <ClCompile Include="src\console.cpp" />
+    <ClCompile Include="src\console_c.c" />
+    <ClCompile Include="src\zlib\crc32.c" />
+    <ClCompile Include="src\zlib\deflate.c" />
+    <ClCompile Include="src\fov.cpp" />
+    <ClCompile Include="src\fov_c.c" />
+    <ClCompile Include="src\fov_circular_raycasting.c" />
+    <ClCompile Include="src\fov_diamond_raycasting.c" />
+    <ClCompile Include="src\fov_permissive2.c" />
+    <ClCompile Include="src\fov_recursive_shadowcasting.c" />
+    <ClCompile Include="src\fov_restrictive.c" />
+    <ClCompile Include="src\zlib\gzclose.c" />
+    <ClCompile Include="src\zlib\gzlib.c" />
+    <ClCompile Include="src\zlib\gzread.c" />
+    <ClCompile Include="src\zlib\gzwrite.c" />
+    <ClCompile Include="src\heightmap.cpp" />
+    <ClCompile Include="src\heightmap_c.c" />
+    <ClCompile Include="src\image.cpp" />
+    <ClCompile Include="src\image_c.c" />
+    <ClCompile Include="src\zlib\infback.c" />
+    <ClCompile Include="src\zlib\inffast.c" />
+    <ClCompile Include="src\zlib\inflate.c" />
+    <ClCompile Include="src\zlib\inftrees.c" />
+    <ClCompile Include="src\lex.cpp" />
+    <ClCompile Include="src\lex_c.c" />
+    <ClCompile Include="src\list_c.c" />
+    <ClCompile Include="src\png\lodepng.c" />
+    <ClCompile Include="src\mersenne.cpp" />
+    <ClCompile Include="src\mersenne_c.c" />
+    <ClCompile Include="src\mouse.cpp" />
+    <ClCompile Include="src\namegen.cpp" />
+    <ClCompile Include="src\namegen_c.c" />
+    <ClCompile Include="src\noise.cpp" />
+    <ClCompile Include="src\noise_c.c" />
+    <ClCompile Include="src\parser.cpp" />
+    <ClCompile Include="src\parser_c.c" />
+    <ClCompile Include="src\path.cpp" />
+    <ClCompile Include="src\path_c.c" />
+    <ClCompile Include="src\sys.cpp" />
+    <ClCompile Include="src\sys_c.c" />
+    <ClCompile Include="src\sys_opengl_c.c" />
+    <ClCompile Include="src\sys_sdl12_c.c" />
+    <ClCompile Include="src\sys_sdl_c.c" />
+    <ClCompile Include="src\sys_sdl_img_bmp.c" />
+    <ClCompile Include="src\sys_sdl_img_png.c" />
+    <ClCompile Include="src\tree_c.c" />
+    <ClCompile Include="src\zlib\trees.c" />
+    <ClCompile Include="src\txtfield.cpp" />
+    <ClCompile Include="src\txtfield_c.c" />
+    <ClCompile Include="src\zlib\uncompr.c" />
+    <ClCompile Include="src\wrappers.c" />
+    <ClCompile Include="src\zip.cpp" />
+    <ClCompile Include="src\zip_c.c" />
+    <ClCompile Include="src\zlib\zutil.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="doc\html2\bsp.html" />
+    <None Include="doc\html2\bsp_init.html" />
+    <None Include="doc\html2\bsp_read.html" />
+    <None Include="doc\html2\bsp_resize.html" />
+    <None Include="doc\html2\bsp_split.html" />
+    <None Include="doc\html2\bsp_traverse.html" />
+    <None Include="doc\html2\color.html" />
+    <None Include="doc\html2\compile_libtcod.html" />
+    <None Include="doc\html2\compile_libtcod_codelite.html" />
+    <None Include="doc\html2\compile_libtcod_haiku.html" />
+    <None Include="doc\html2\compile_libtcod_linux.html" />
+    <None Include="doc\html2\compile_libtcod_mingw.html" />
+    <None Include="doc\html2\console.html" />
+    <None Include="doc\html2\console_advanced.html" />
+    <None Include="doc\html2\console_ascii.html" />
+    <None Include="doc\html2\console_bkgnd_flag_t.html" />
+    <None Include="doc\html2\console_blocking_input.html" />
+    <None Include="doc\html2\console_credits.html" />
+    <None Include="doc\html2\console_draw.html" />
+    <None Include="doc\html2\console_draw_basic.html" />
+    <None Include="doc\html2\console_fading.html" />
+    <None Include="doc\html2\console_flush.html" />
+    <None Include="doc\html2\console_fullscreen.html" />
+    <None Include="doc\html2\console_init.html" />
+    <None Include="doc\html2\console_init_root.html" />
+    <None Include="doc\html2\console_input.html" />
+    <None Include="doc\html2\console_key_t.html" />
+    <None Include="doc\html2\console_keyboard_repeat.html" />
+    <None Include="doc\html2\console_keycode_t.html" />
+    <None Include="doc\html2\console_map.html" />
+    <None Include="doc\html2\console_mouse_t.html" />
+    <None Include="doc\html2\console_non_blocking_input.html" />
+    <None Include="doc\html2\console_offscreen.html" />
+    <None Include="doc\html2\console_print.html" />
+    <None Include="doc\html2\console_read.html" />
+    <None Include="doc\html2\console_set_custom_font.html" />
+    <None Include="doc\html2\console_window.html" />
+    <None Include="doc\html2\fov.html" />
+    <None Include="doc\html2\fov_compute.html" />
+    <None Include="doc\html2\fov_get.html" />
+    <None Include="doc\html2\fov_init.html" />
+    <None Include="doc\html2\heightmap.html" />
+    <None Include="doc\html2\heightmap_base.html" />
+    <None Include="doc\html2\heightmap_init.html" />
+    <None Include="doc\html2\heightmap_modify.html" />
+    <None Include="doc\html2\heightmap_read.html" />
+    <None Include="doc\html2\image.html" />
+    <None Include="doc\html2\image_blit.html" />
+    <None Include="doc\html2\image_create.html" />
+    <None Include="doc\html2\image_read.html" />
+    <None Include="doc\html2\image_save.html" />
+    <None Include="doc\html2\image_update.html" />
+    <None Include="doc\html\compil\index.html" />
+    <None Include="doc\index2.html" />
+    <None Include="doc\html2\line.html" />
+    <None Include="doc\html\compil\linux.html" />
+    <None Include="doc\html2\list.html" />
+    <None Include="doc\html2\list_array.html" />
+    <None Include="doc\html2\list_create.html" />
+    <None Include="doc\html2\list_iterator.html" />
+    <None Include="doc\html2\list_list.html" />
+    <None Include="doc\html2\list_stack.html" />
+    <None Include="doc\html\compil\macosx.html" />
+    <None Include="doc\html2\mouse.html" />
+    <None Include="doc\html\compil\msys_cb.html" />
+    <None Include="doc\html\compil\msys_mingw.html" />
+    <None Include="doc\html2\namegen.html" />
+    <None Include="doc\html2\namegen_file.html" />
+    <None Include="doc\html2\namegen_file_1.html" />
+    <None Include="doc\html2\namegen_file_2.html" />
+    <None Include="doc\html2\namegen_file_3.html" />
+    <None Include="doc\html2\namegen_file_4.html" />
+    <None Include="doc\html2\namegen_generate.html" />
+    <None Include="doc\html2\namegen_init.html" />
+    <None Include="doc\html2\noise.html" />
+    <None Include="doc\html2\noise_get.html" />
+    <None Include="doc\html2\noise_get_fbm.html" />
+    <None Include="doc\html2\noise_get_turbulence.html" />
+    <None Include="doc\html2\noise_init.html" />
+    <None Include="doc\html2\noise_setType.html" />
+    <None Include="doc\html2\parser.html" />
+    <None Include="doc\html2\parser_format.html" />
+    <None Include="doc\html2\parser_run.html" />
+    <None Include="doc\html2\parser_str.html" />
+    <None Include="doc\html2\parser_types.html" />
+    <None Include="doc\html2\path.html" />
+    <None Include="doc\html2\path_compute.html" />
+    <None Include="doc\html2\path_init.html" />
+    <None Include="doc\html2\path_read.html" />
+    <None Include="doc\html2\random.html" />
+    <None Include="doc\html2\random_distro.html" />
+    <None Include="doc\html2\random_init.html" />
+    <None Include="doc\html2\random_use.html" />
+    <None Include="doc\html2\system.html" />
+    <None Include="doc\html2\system_clipboard.html" />
+    <None Include="doc\html2\system_filesystem.html" />
+    <None Include="doc\html2\system_misc.html" />
+    <None Include="doc\html2\system_screenshots.html" />
+    <None Include="doc\html2\system_sdlcbk.html" />
+    <None Include="doc\html2\system_time.html" />
+    <None Include="doc\html2\zip.html" />
+    <None Include="doc\html2\zip_init.html" />
+    <None Include="doc\html2\zip_load.html" />
+    <None Include="doc\html2\zip_put.html" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

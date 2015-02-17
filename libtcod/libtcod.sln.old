@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual C++ Express 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libtcod", "libtcod.vcproj", "{5A6215FD-559B-4AEF-89BE-CDA15CBBEA7B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "worldgen", "samples\worldgen\worldgen\worldgen.vcproj", "{EE93A5F9-AE34-4F21-AA8F-9D1CE4DFD3EA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rlTut", "..\rlTut\rlTut.vcproj", "{42F183A0-4FD5-4946-A1DE-24724D01A2B7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5A6215FD-559B-4AEF-89BE-CDA15CBBEA7B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5A6215FD-559B-4AEF-89BE-CDA15CBBEA7B}.Debug|Win32.Build.0 = Debug|Win32
+		{5A6215FD-559B-4AEF-89BE-CDA15CBBEA7B}.Release|Win32.ActiveCfg = Release|Win32
+		{5A6215FD-559B-4AEF-89BE-CDA15CBBEA7B}.Release|Win32.Build.0 = Release|Win32
+		{EE93A5F9-AE34-4F21-AA8F-9D1CE4DFD3EA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{EE93A5F9-AE34-4F21-AA8F-9D1CE4DFD3EA}.Debug|Win32.Build.0 = Debug|Win32
+		{EE93A5F9-AE34-4F21-AA8F-9D1CE4DFD3EA}.Release|Win32.ActiveCfg = Release|Win32
+		{EE93A5F9-AE34-4F21-AA8F-9D1CE4DFD3EA}.Release|Win32.Build.0 = Release|Win32
+		{42F183A0-4FD5-4946-A1DE-24724D01A2B7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{42F183A0-4FD5-4946-A1DE-24724D01A2B7}.Debug|Win32.Build.0 = Debug|Win32
+		{42F183A0-4FD5-4946-A1DE-24724D01A2B7}.Release|Win32.ActiveCfg = Release|Win32
+		{42F183A0-4FD5-4946-A1DE-24724D01A2B7}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
