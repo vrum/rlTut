@@ -1,10 +1,10 @@
 #include "libtcod.hpp"
 #include "Actor.hpp"
-#include "Cellular.hpp"
+#include "CaveGenerator.hpp"
 #include "Map.hpp"
 #include "Engine.hpp"
 
-int size_x = 64, size_y = 20;
+int size_x = 64, size_y = 36;
 int fillprob = 40;
 generation_params genParams[] = {{5, 5, 5}};
 

@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "libtcod.hpp"
 #include "Actor.hpp"
-#include "Cellular.hpp"
+#include "CaveGenerator.hpp"
 #include "Map.hpp"
 #include "Engine.hpp"
 

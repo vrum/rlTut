@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rlTut", "..\rlTut\rlTut.vcx
 		{5A6215FD-559B-4AEF-89BE-CDA15CBBEA7B} = {5A6215FD-559B-4AEF-89BE-CDA15CBBEA7B}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Planet", "..\Planet\Planet.vcxproj", "{98731F5E-69CF-4C34-8C09-2F272EA9BF57}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -31,6 +33,10 @@ Global
 		{42F183A0-4FD5-4946-A1DE-24724D01A2B7}.Debug|Win32.Build.0 = Debug|Win32
 		{42F183A0-4FD5-4946-A1DE-24724D01A2B7}.Release|Win32.ActiveCfg = Release|Win32
 		{42F183A0-4FD5-4946-A1DE-24724D01A2B7}.Release|Win32.Build.0 = Release|Win32
+		{98731F5E-69CF-4C34-8C09-2F272EA9BF57}.Debug|Win32.ActiveCfg = Debug|Win32
+		{98731F5E-69CF-4C34-8C09-2F272EA9BF57}.Debug|Win32.Build.0 = Debug|Win32
+		{98731F5E-69CF-4C34-8C09-2F272EA9BF57}.Release|Win32.ActiveCfg = Release|Win32
+		{98731F5E-69CF-4C34-8C09-2F272EA9BF57}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

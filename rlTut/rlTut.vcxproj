@@ -90,14 +90,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
-    <ClCompile Include="Cellular.cpp" />
+    <ClCompile Include="CaveGenerator.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="rlTut.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.hpp" />
-    <ClInclude Include="Cellular.hpp" />
+    <ClInclude Include="CaveGenerator.hpp" />
     <ClInclude Include="Engine.hpp" />
     <ClInclude Include="Map.hpp" />
     <ClInclude Include="targetver.h" />

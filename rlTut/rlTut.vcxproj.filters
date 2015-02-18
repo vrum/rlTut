@@ -27,7 +27,7 @@
     <ClCompile Include="rlTut.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Cellular.cpp">
+    <ClCompile Include="CaveGenerator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -44,7 +44,7 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Cellular.hpp">
+    <ClInclude Include="CaveGenerator.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
