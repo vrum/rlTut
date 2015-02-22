@@ -97,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.hpp" />
+    <ClInclude Include="BspListener.hpp" />
     <ClInclude Include="CaveGenerator.hpp" />
     <ClInclude Include="Engine.hpp" />
     <ClInclude Include="Map.hpp" />

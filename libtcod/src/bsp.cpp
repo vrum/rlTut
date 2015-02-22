@@ -120,9 +120,12 @@ void TCODBsp::splitRecursive(TCODRandom *randomizer, int nb, int minHSize, int m
 	bool horiz;
 	if (! randomizer ) randomizer=TCODRandom::getInstance();
 	// promote square rooms
-	if ( h < 2*minVSize || w > h * maxHRatio ) horiz = false;
-	else if ( w < 2*minHSize || h > w * maxVRatio) horiz = true;
-	else horiz = randomizer->getInt(0,1) == 0;
+	if ( h < 2 * minVSize || w > h * maxHRatio ) 
+		horiz = false;
+	else if ( w < 2 * minHSize || h > w * maxVRatio) 
+			horiz = true;
+		else 
+			horiz = randomizer->getInt(0,1) == 0;
 	int position;
 	if ( horiz ) {
 		position = randomizer->getInt(y+minVSize,y+h-minVSize);

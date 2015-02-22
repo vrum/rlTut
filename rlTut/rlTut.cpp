@@ -10,9 +10,9 @@ Engine engine;
 
 
 int _tmain(int argc, _TCHAR* argv[]) {
-	//amain(80, 48, 45, 5, 5, 2);
+    //amain(80, 48, 45, 5, 5, 2);
 
-	while (!TCODConsole::isWindowClosed() ) {
+    while (!TCODConsole::isWindowClosed() ) {
         engine.update();
         engine.render();
         TCODConsole::flush();

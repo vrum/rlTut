@@ -19,7 +19,7 @@ int main (int argc, char** argv)
 	heightMapBuilder.SetDestNoiseMap (heightMap);
 	heightMapBuilder.SetDestSize (512, 512);
 	heightMapBuilder.EnableSeamless(true);
-	//  heightMapBuilder.SetBounds (-90.0, 90.0, -180.0, 180.0);
+	heightMapBuilder.SetBounds (-90.0, 90.0, -180.0, 180.0);
 	heightMapBuilder.SetBounds (-2.0, 2.0, -2.0, 2.0);
 	heightMapBuilder.Build ();
 	utils::RendererImage renderer;
