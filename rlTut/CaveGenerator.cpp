@@ -35,7 +35,7 @@ void CaveGenerator::init(Map &map, int fillprob, generation_params *genParams, i
     }
     for(yi = 1; yi < size_y - 1; yi++)
         for(xi = 1; xi < size_x - 1; xi++)
-            grid[yi][xi] = map.isWall(yi,xi)?randpick():TILE_FLOOR;
+            grid[yi][xi] = map.isWall(xi,yi)?randpick():TILE_FLOOR;
 
     for(yi = 0; yi < size_y; yi++)
         for(xi = 0; xi < size_x; xi++)

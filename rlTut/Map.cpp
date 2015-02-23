@@ -122,8 +122,24 @@ void Map::createRoom(bool first, int x1, int y1, int x2, int y2) {
     } else {
         TCODRandom *rng=TCODRandom::getInstance();
         if ( rng->getInt(0,3)==0 ) {
-            engine.actors.push(new Actor((x1+x2)/2,(y1+y2)/2,'@',
+            engine.actors.push(new Actor((x1+x2)/2,(y1+y2)/2,'@',"orc",
                                          TCODColor::yellow));
         }
     }
+}
+
+bool Map::canWalk(int x, int y) const {
+    if (isWall(x,y)) {
+        // this is a wall
+        return false;
+    }
+    for (Actor **iterator=engine.actors.begin();
+        iterator!=engine.actors.end();iterator++) {
+        Actor *actor=*iterator;
+        if ( actor->x == x && actor->y == y ) {
+            // there is an actor there. cannot walk
+            return false;
+        }
+    }
+    return true;
 }

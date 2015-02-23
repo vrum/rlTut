@@ -22,6 +22,7 @@ public :
     bool isInFov(int x, int y) const;
     bool isExplored(int x, int y) const;
     void computeFov();
+	bool canWalk(int x, int y) const;
 protected :
     Tile *tiles;
     TCODMap *map;

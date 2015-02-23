@@ -1,6 +1,13 @@
 class Engine {
 public :
-    TCODList<Actor *> actors;
+    enum GameStatus {
+        STARTUP,
+        IDLE,
+        NEW_TURN,
+        VICTORY,
+        DEFEAT
+    } gameStatus;
+	TCODList<Actor *> actors;
     Actor *player;
     Map *map;
     CaveGenerator *caveGen;

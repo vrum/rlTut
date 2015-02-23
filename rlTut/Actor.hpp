@@ -3,6 +3,10 @@ public:
     int x, y;
     int ch;
     TCODColor col;
-    Actor(int x, int y, int ch, const TCODColor &col);
+	const char *name; // the actor's name
+ 
+	Actor(int x, int y, int ch, const char *name, const TCODColor &col);
+	void update();
+	bool moveOrAttack(int x,int y);
     void render() const;
 };
