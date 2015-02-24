@@ -1,12 +1,8 @@
 // rlTut.cpp : Defines the entry point for the console application.
 #include "stdafx.h"
-#include "libtcod.hpp"
-#include "Actor.hpp"
-#include "CaveGenerator.hpp"
-#include "Map.hpp"
-#include "Engine.hpp"
+#include "main.hpp"
 
-Engine engine;
+Engine engine(80,50);
 
 
 int _tmain(int argc, _TCHAR* argv[]) {

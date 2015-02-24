@@ -90,16 +90,23 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="Ai.cpp" />
+    <ClCompile Include="Attacker.cpp" />
     <ClCompile Include="CaveGenerator.cpp" />
+    <ClCompile Include="Destructible.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="rlTut.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.hpp" />
+    <ClInclude Include="Ai.hpp" />
+    <ClInclude Include="Attacker.hpp" />
     <ClInclude Include="BspListener.hpp" />
     <ClInclude Include="CaveGenerator.hpp" />
+    <ClInclude Include="Destructible.hpp" />
     <ClInclude Include="Engine.hpp" />
+    <ClInclude Include="main.hpp" />
     <ClInclude Include="Map.hpp" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>

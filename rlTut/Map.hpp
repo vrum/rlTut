@@ -9,8 +9,6 @@ struct Tile {
     Tile() : explored(false) {}
 };
 
-class BspListener;
-
 class Map {
 public :
     int width, height;
@@ -18,16 +16,18 @@ public :
     Map(int width, int height);
     ~Map();
     bool isWall(int x, int y) const;
-    void render() const;
     bool isInFov(int x, int y) const;
     bool isExplored(int x, int y) const;
+    bool canWalk(int x, int y) const;
     void computeFov();
-	bool canWalk(int x, int y) const;
+    void render() const;
 protected :
     Tile *tiles;
     TCODMap *map;
     friend class BspListener;
-    friend class CaveGenerator;
+	friend class CaveGenerator;
+ 
     void dig(int x1, int y1, int x2, int y2);
     void createRoom(bool first, int x1, int y1, int x2, int y2);
+    void addMonster(int x, int y);
 };
