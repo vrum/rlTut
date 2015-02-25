@@ -1,25 +1,25 @@
 class Engine {
 public :
-    enum GameStatus {
-        STARTUP,
-        IDLE,
-        NEW_TURN,
-        VICTORY,
-        DEFEAT
-    } gameStatus;
+	enum GameStatus {
+		STARTUP,
+		IDLE,
+		NEW_TURN,
+		VICTORY,
+		DEFEAT
+	} gameStatus;
 	TCOD_key_t lastKey;
 	TCODList<Actor *> actors;
-    Actor *player;
-    Map *map;
-    int fovRadius;
+	Actor *player;
+	Map *map;
+	int fovRadius;
 	int screenWidth;
-    int screenHeight;
- 	CaveGenerator *caveGen;
+	int screenHeight;
+	CaveGenerator *caveGen;
 
-    Engine(int screenWidth, int screenHeight);
-    ~Engine();
-    void update();
-    void render();
+	Engine(int screenWidth, int screenHeight);
+	~Engine();
+	void update();
+	void render();
 	void sendToBack(Actor *actor);
 };
 

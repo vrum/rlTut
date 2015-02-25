@@ -2,17 +2,17 @@
 #include "stdafx.h"
 #include "main.hpp"
 
-Engine engine(80,50);
+Engine engine(80, 50);
 
 
-int _tmain(int argc, _TCHAR* argv[]) {
-    //amain(80, 48, 45, 5, 5, 2);
+int _tmain(int argc, _TCHAR *argv[]) {
+	//amain(80, 48, 45, 5, 5, 2);
 
-    while (!TCODConsole::isWindowClosed() ) {
-        engine.update();
-        engine.render();
-        TCODConsole::flush();
-    }
+	while (!TCODConsole::isWindowClosed() ) {
+		engine.update();
+		engine.render();
+		TCODConsole::flush();
+	}
 
-    return 0;
+	return 0;
 }

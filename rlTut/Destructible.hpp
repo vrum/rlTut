@@ -5,7 +5,9 @@ public :
 	float defense; // hit points deflected
 	const char *corpseName; // the actor's name once dead/destroyed
 	Destructible(float maxHp, float defense, const char *corpseName);
-	inline bool isDead() { return hp <= 0; }
+	inline bool isDead() {
+		return hp <= 0;
+	}
 	float takeDamage(Actor *owner, float damage);
 	virtual void die(Actor *owner);
 };
