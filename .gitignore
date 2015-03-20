@@ -7,6 +7,7 @@
 *.sln.docstates
 
 # Build results
+REXPaint/
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
