@@ -102,7 +102,6 @@
     <ClInclude Include="Actor.hpp" />
     <ClInclude Include="Ai.hpp" />
     <ClInclude Include="Attacker.hpp" />
-    <ClInclude Include="BspListener.hpp" />
     <ClInclude Include="CaveGenerator.hpp" />
     <ClInclude Include="Destructible.hpp" />
     <ClInclude Include="Engine.hpp" />

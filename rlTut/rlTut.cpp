@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "main.hpp"
 
-Engine engine(80, 50);
+Engine engine(96, 48);
 
 
 int _tmain(int argc, _TCHAR *argv[]) {

@@ -1,8 +1,3 @@
-static const int BSP_NODE_MIN_HSIZE = 8;
-static const int BSP_NODE_MIN_VSIZE = 8;
-
-static const int ROOM_MIN_HSIZE = 6;
-static const int ROOM_MIN_VSIZE = 6;
 
 struct Tile {
 	bool explored;
@@ -21,13 +16,16 @@ public :
 	bool canWalk(int x, int y) const;
 	void computeFov();
 	void render() const;
+	void print(void);
+	void or(const Map &map);
+	void and(const Map &map);
 protected :
 	Tile *tiles;
 	TCODMap *map;
 	friend class BspListener;
 	friend class CaveGenerator;
-
 	void dig(int x1, int y1, int x2, int y2);
+	void dig2(int x1, int y1, int x2, int y2);
 	void createRoom(bool first, int x1, int y1, int x2, int y2);
 	void addMonster(int x, int y);
 };

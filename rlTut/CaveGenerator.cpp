@@ -147,27 +147,6 @@ void CaveGenerator::printfunc(void)
 	}
 }
 
-void CaveGenerator::printmap(void)
-{
-	int xi, yi;
-
-	for (yi = 0; yi < size_y; yi++)
-	{
-		for (xi = 0; xi < size_x; xi++)
-		{
-			switch (grid[yi][xi]) {
-				case TILE_WALL:
-					putchar('#');
-					break;
-				case TILE_FLOOR:
-					putchar('.');
-					break;
-			}
-		}
-		putchar('\n');
-	}
-}
-
 int CaveGenerator::generateMap()
 {
 	int ii, jj;
@@ -182,7 +161,6 @@ int CaveGenerator::generateMap()
 	}
 
 	printfunc();
-	printmap();
 	return 0;
 }
 #if 0
@@ -221,7 +199,6 @@ int main(int argc, char **argv)
 			generation();
 	}
 	printfunc();
-	printmap();
 	return 0;
 }
 #endif //0

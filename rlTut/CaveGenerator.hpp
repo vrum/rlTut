@@ -25,7 +25,6 @@ public:
 	void reset();
 	int generateMap();
 	void generation(generation_params *params);
-	void printmap(void);
 	void printfunc(void);
 	int exportMap(Map *map);
 	int exportMap(const char *filename);

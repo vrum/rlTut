@@ -1,7 +1,14 @@
 #include "main.hpp"
 #include <stdio.h>
+static const int BSP_NODE_MIN_HSIZE = 12;
+static const int BSP_NODE_MIN_VSIZE = 8;
 
-static const int MAX_ROOM_MONSTERS = 3;
+static const int ROOM_MIN_HSIZE = 6;
+static const int ROOM_MIN_VSIZE = 4;
+static const int ROOM_MAX_HSIZE = 10;
+static const int ROOM_MAX_VSIZE = 6;
+
+static const int MAX_ROOM_MONSTERS = 2;
 
 class BspListener : public ITCODBspCallback {
 private :
@@ -15,20 +22,45 @@ public :
 			int x, y, w, h;
 			// dig a room
 			TCODRandom *rng = TCODRandom::getInstance();
-			w = rng->getInt(ROOM_MIN_HSIZE, node->w - 2);
-			h = rng->getInt(ROOM_MIN_VSIZE, node->h - 2);
-			x = rng->getInt(node->x + 1, node->x + node->w - w - 1);
+			w = rng->getInt(ROOM_MIN_HSIZE, ROOM_MAX_HSIZE);
+			h = rng->getInt(ROOM_MIN_VSIZE, ROOM_MAX_VSIZE);
+			x = rng->getInt(node->x +  1, node->x + node->w - w - 1);
 			y = rng->getInt(node->y + 1, node->y + node->h - h - 1);
-			printf("x:%d y:%d w:%d h:%d\n", x, y, w, h);
 			map.createRoom(roomNum == 0, x, y, x + w - 1, y + h - 1);
-			if ( roomNum != 0 ) {
-				// dig a corridor from last room
-				map.dig(lastx, lasty, x + w / 2, lasty);
-				map.dig(x + w / 2, lasty, x + w / 2, y + h / 2);
-			}
-			lastx = x + w / 2;
-			lasty = y + h / 2;
+			node->x = x;
+			node->y = y;
+			node->w = w;
+			node->h = h;
 			roomNum++;
+		}
+		else
+		{
+			TCODRandom *rng = TCODRandom::getInstance();
+			TCODBsp *l = node->getLeft();
+			TCODBsp *r = node->getRight();
+			int x1, y1, x2, y2;
+			do 
+			{
+				x1 = rng->getInt(l->x, l->x+l->w-1);
+				y1 = rng->getInt(l->y, l->y+l->h/2);
+				x2 = rng->getInt(r->x, r->x+r->w-1);
+				y2 = rng->getInt(r->y, r->y+r->h/2-1);
+			}
+			while (map.isWall(x1,y1) || map.isWall(x2,y2));
+			map.dig2(x1, y1, x2, y2);
+			if (node->level < 0) 
+			{
+				int x11, y11, x22, y22;
+				do 
+				{
+					x11 = rng->getInt(l->x, l->x+l->w-1);
+					y11 = rng->getInt(l->y+l->h/2, l->y+l->h-1);
+					x22 = rng->getInt(r->x, r->x+r->w-1);
+					y22 = rng->getInt(r->y+r->h/2, r->y+r->h-1);
+				}
+				while (map.isWall(x11,y11) || map.isWall(x22,y22));
+				map.dig2(x11, y11, x22, y22);
+			}
 		}
 		return true;
 	}
@@ -36,13 +68,11 @@ public :
 
 Map::Map(int width, int height) : width(width), height(height) {
 	tiles = new Tile[width * height];
-	/**/
 	map = new TCODMap(width, height);
 	TCODBsp bsp(0, 0, width, height);
-	bsp.splitRecursive(NULL, 10, BSP_NODE_MIN_HSIZE, BSP_NODE_MIN_VSIZE, 1.5f, 1.5f);
+	bsp.splitRecursive(NULL, 5, BSP_NODE_MIN_HSIZE, BSP_NODE_MIN_VSIZE, 1.5f, 1.5f);
 	BspListener listener(*this);
 	bsp.traverseInvertedLevelOrder(&listener, NULL);
-	/**/
 }
 
 Map::~Map() {
@@ -68,12 +98,32 @@ void Map::dig(int x1, int y1, int x2, int y2) {
 	}
 }
 
+void Map::dig2(int x1, int y1, int x2, int y2) {
+	TCODRandom *rng = TCODRandom::getInstance();
+	//	int xm = rng->getInt(mx, Mx);
+	//	int ym = rng->getInt(my, My);
+	int xm = (x1+x2)/2;
+	int ym = (y1+y2)/2;
+	int horiz = rng->getInt(0,1);
+	if (horiz) {
+		dig(x1, y1, x1, ym);
+		dig(x2, y2, x2, ym);
+		dig(x1, ym, x2, ym);
+	}
+	else
+	{
+		dig(x1, y1, xm, y1);
+		dig(x2, y2, xm, y2);
+		dig(xm, y1, xm, y2);
+	}
+}
+
 void Map::addMonster(int x, int y) {
 	TCODRandom *rng = TCODRandom::getInstance();
 	if ( rng->getInt(0, 100) < 80 ) {
 		// create an orc
 		Actor *orc = new Actor(x, y, 'o', "orc",
-							   TCODColor::desaturatedGreen);
+			TCODColor::desaturatedGreen);
 		orc->destructible = new MonsterDestructible(10, 0, "dead orc");
 		orc->attacker = new Attacker(3);
 		orc->ai = new MonsterAi();
@@ -81,7 +131,7 @@ void Map::addMonster(int x, int y) {
 	} else {
 		// create a troll
 		Actor *troll = new Actor(x, y, 'T', "troll",
-								 TCODColor::darkerGreen);
+			TCODColor::darkerGreen);
 		troll->destructible = new MonsterDestructible(16, 1, "troll carcass");
 		troll->attacker = new Attacker(4);
 		troll->ai = new MonsterAi();
@@ -119,12 +169,12 @@ bool Map::canWalk(int x, int y) const {
 		return false;
 	}
 	for (Actor **iterator = engine.actors.begin();
-			iterator != engine.actors.end(); iterator++) {
-		Actor *actor = *iterator;
-		if ( actor->blocks && actor->x == x && actor->y == y ) {
-			// there is a blocking actor here. cannot walk
-			return false;
-		}
+		iterator != engine.actors.end(); iterator++) {
+			Actor *actor = *iterator;
+			if ( actor->blocks && actor->x == x && actor->y == y ) {
+				// there is a blocking actor here. cannot walk
+				return false;
+			}
 	}
 	return true;
 }
@@ -158,11 +208,63 @@ void Map::render() const {
 			TCODConsole::root->setCharForeground(x, y, TCODColor::lightGrey);
 			TCODConsole::root->setCharBackground( x, y, TCODColor::black);
 			TCODConsole::root->setCharForeground( x, y, TCODColor::black);
-			if (isInFov(x, y) ) {
+//			if (isInFov(x, y) ) 
+			{
 				TCODConsole::root->setCharForeground(x, y, TCODColor::lightGrey);
-			} else if ( isExplored(x, y) ) {
+			} 
+/*
+else if ( isExplored(x, y) ) {
 				TCODConsole::root->setCharForeground(x, y, TCODColor::darkerGrey);
 			}
+		*/
+		}	
+	}
+}
+
+void Map::print(void)
+{
+	int xi, yi;
+
+	for (yi = 0; yi < height; yi++)
+	{
+		for (xi = 0; xi < width; xi++)
+		{
+			if (isWall(xi,yi)) 
+				putchar('#');
+			else
+				putchar('.');
+		}
+		putchar('\n');
+	}
+	putchar('\n');
+}
+
+void Map::or(const Map &map1)
+{
+	int xi, yi;
+	for (yi = 0; yi < height; yi++)
+	{
+		for (xi = 0; xi < width; xi++)
+		{
+			if (map1.map->isWalkable(xi,yi) || this->map->isWalkable(xi,yi))
+				this->map->setProperties(xi, yi, true, true);
+			else
+				this->map->setProperties(xi, yi, false, false);
+		}
+	}
+}
+
+void Map::and(const Map &map1)
+{
+	int xi, yi;
+	for (yi = 0; yi < height; yi++)
+	{
+		for (xi = 0; xi < width; xi++)
+		{
+			if (map1.map->isWalkable(xi,yi) && this->map->isWalkable(xi,yi))
+				this->map->setProperties(xi, yi, true, true);
+			else
+				this->map->setProperties(xi, yi, false, false);
 		}
 	}
 }
