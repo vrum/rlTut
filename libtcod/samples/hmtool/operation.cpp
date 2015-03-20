@@ -112,7 +112,7 @@ static const char *footer1[] = {
 static const char *footer2[] = {
 // C footer
 "\tbuildMap(hm);\n"
-"\tTCOD_console_init_root(HM_WIDTH,HM_HEIGHT,\"height map test\",false);\n"
+"\tTCOD_console_init_root(HM_WIDTH,HM_HEIGHT,\"height map test\",false, TCOD_RENDERER_SDL);\n"
 "\tfor (x=0; x < HM_WIDTH; x ++ ) {\n"
 "\t\tfor (y=0;y < HM_HEIGHT; y++ ) {\n"
 "\t\t\tfloat z = TCOD_heightmap_get_value(hm,x,y);\n"
@@ -210,7 +210,7 @@ const char *Operation::buildCode(CodeType type) {
 	}
 	addCode(footer1[type]);
 	if ((needsRandom || needsNoise) && type == C ) {
-		addCode(format("\trnd=TCOD_random_new_from_seed(%uU);\n",seed));
+		addCode(format("\trnd=TCOD_random_new_from_seed(TCOD_RNG_CMWC, %uU);\n",seed));
 		if (needsNoise) {
 			addCode("\tnoise=TCOD_noise_new(2,TCOD_NOISE_DEFAULT_HURST,TCOD_NOISE_DEFAULT_LACUNARITY,rnd);\n");
 		}
@@ -980,7 +980,7 @@ const char *NoiseLerpOperation::getCode(CodeType type) {
 				"\t{\n"
 				"\t\tTCOD_heightmap_t *tmp=TCOD_heightmap_new(HM_WIDTH,HM_HEIGHT);\n"
 				"\t\tTCOD_heightmap_add_fbm(tmp,noise,%g,%g,%g,%g,%g,%g,%g);\n"
-				"\t\tTCOD_heightmap_lerp(hm,tmp,hm,%g);\n"
+				"\t\tTCOD_heightmap_lerp_hm(hm,tmp,hm,%g);\n"
 				"\t\tTCOD_heightmap_delete(tmp);\n"
 				"\t}\n",
 				zoom,zoom,offsetx,offsety,octaves,offset,scale,coef

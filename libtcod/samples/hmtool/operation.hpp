@@ -1,5 +1,5 @@
-#define HM_WIDTH 100
-#define HM_HEIGHT 80
+#define HM_WIDTH 192
+#define HM_HEIGHT 96
 
 // functions used by the operations
 void backup();
