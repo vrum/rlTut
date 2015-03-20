@@ -1,7 +1,7 @@
 // Tut8.cpp : Defines the entry point for the console application.
 //
 
-#if 1
+#if 0
 #include <time.h>
 #include "noise/noise.h"
 #include "noiseutils.h"
@@ -160,7 +160,7 @@ int main (int argc, char** argv)
 
 #include <fstream>
 
-#include <noise.h>
+#include <noise/noise.h>
 
 #include "noiseutils.h"
 
@@ -192,10 +192,10 @@ int main ()
   const double EAST_COORD = 180;
 
   // Width of elevation grid, in points.
-  const int GRID_WIDTH = 1024;
+  const int GRID_WIDTH = 1920;
 
   // Height of elevation grid, in points.
-  const int GRID_HEIGHT = 512;
+  const int GRID_HEIGHT = 1080;
 
   // Planet seed.  Change this to generate a different planet.
   const int CUR_SEED = 2.01;
