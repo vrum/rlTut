@@ -1,6 +1,6 @@
 
 struct Tile {
-	bool explored;
+    bool explored; // has the player already seen this tile ?
 	Tile() : explored(false) {}
 };
 
@@ -28,4 +28,5 @@ protected :
 	void dig2(int x1, int y1, int x2, int y2);
 	void createRoom(bool first, int x1, int y1, int x2, int y2);
 	void addMonster(int x, int y);
+    void addItem(int x, int y);
 };

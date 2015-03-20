@@ -93,20 +93,28 @@
     <ClCompile Include="Ai.cpp" />
     <ClCompile Include="Attacker.cpp" />
     <ClCompile Include="CaveGenerator.cpp" />
+    <ClCompile Include="Container.cpp" />
     <ClCompile Include="Destructible.cpp" />
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="Gui.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Pickable.cpp" />
     <ClCompile Include="rlTut.cpp" />
+    <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.hpp" />
     <ClInclude Include="Ai.hpp" />
     <ClInclude Include="Attacker.hpp" />
     <ClInclude Include="CaveGenerator.hpp" />
+    <ClInclude Include="Container.hpp" />
     <ClInclude Include="Destructible.hpp" />
     <ClInclude Include="Engine.hpp" />
+    <ClInclude Include="Gui.hpp" />
     <ClInclude Include="main.hpp" />
     <ClInclude Include="Map.hpp" />
+    <ClInclude Include="Pickable.hpp" />
+    <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>

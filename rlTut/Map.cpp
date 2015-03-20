@@ -9,6 +9,7 @@ static const int ROOM_MAX_HSIZE = 10;
 static const int ROOM_MAX_VSIZE = 6;
 
 static const int MAX_ROOM_MONSTERS = 2;
+static const int MAX_ROOM_ITEMS = 2;
 
 class BspListener : public ITCODBspCallback {
 private :
@@ -139,6 +140,48 @@ void Map::addMonster(int x, int y) {
 	}
 }
 
+void Map::addItem(int x, int y) {
+	TCODRandom *rng=TCODRandom::getInstance();
+	int dice = rng->getInt(0,100);
+	if ( dice < 70 ) {
+		// create a health potion
+		Actor *healthPotion=new Actor(x,y,'!',"health potion",
+			TCODColor::violet);
+		healthPotion->blocks=false;
+		healthPotion->pickable=new Pickable(NULL,new HealthEffect(4,NULL));
+		engine.actors.push(healthPotion);
+	} else if ( dice < 70+10 ) {
+		// create a scroll of lightning bolt 
+		Actor *scrollOfLightningBolt=new Actor(x,y,'#',"scroll of lightning bolt",
+			TCODColor::lightYellow);
+		scrollOfLightningBolt->blocks=false;
+		scrollOfLightningBolt->pickable=new Pickable(
+			new TargetSelector(TargetSelector::CLOSEST_MONSTER,5),
+			new HealthEffect(-20,"A lighting bolt strikes the %s with a loud thunder!\n"
+				"The damage is %g hit points."));
+		engine.actors.push(scrollOfLightningBolt);
+	} else if ( dice < 70+10+10 ) {
+		// create a scroll of fireball
+		Actor *scrollOfFireball=new Actor(x,y,'#',"scroll of fireball",
+			TCODColor::lightYellow);
+		scrollOfFireball->blocks=false;
+		scrollOfFireball->pickable=new Pickable(
+			new TargetSelector(TargetSelector::SELECTED_RANGE,3),
+			new HealthEffect(-12,"The %s gets burned for %g hit points."));
+		engine.actors.push(scrollOfFireball);
+	} else {
+		// create a scroll of confusion
+		Actor *scrollOfConfusion=new Actor(x,y,'#',"scroll of confusion",
+			TCODColor::lightYellow);
+		scrollOfConfusion->blocks=false;
+		scrollOfConfusion->pickable=new Pickable(
+			new TargetSelector(TargetSelector::SELECTED_MONSTER,5),
+			new AiChangeEffect(new ConfusedMonsterAi(10),
+				"The eyes of the %s look vacant,\nas he starts to stumble around!"));
+		engine.actors.push(scrollOfConfusion);
+	}
+}
+
 void Map::createRoom(bool first, int x1, int y1, int x2, int y2) {
 	dig (x1, y1, x2, y2);
 	if ( first ) {
@@ -147,6 +190,7 @@ void Map::createRoom(bool first, int x1, int y1, int x2, int y2) {
 		engine.player->y = (y1 + y2) / 2;
 	} else {
 		TCODRandom *rng = TCODRandom::getInstance();
+		// add monsters
 		int nbMonsters = rng->getInt(0, MAX_ROOM_MONSTERS);
 		while (nbMonsters > 0) {
 			int x = rng->getInt(x1, x2);
@@ -155,6 +199,16 @@ void Map::createRoom(bool first, int x1, int y1, int x2, int y2) {
 				addMonster(x, y);
 			}
 			nbMonsters--;
+		}
+		// add items
+		int nbItems=rng->getInt(0, MAX_ROOM_ITEMS);
+		while (nbItems > 0) {
+		    int x=rng->getInt(x1,x2);
+		    int y=rng->getInt(y1,y2);
+    		if ( canWalk(x,y) ) {
+				addItem(x,y);
+			}
+		    nbItems--;
 		}
 	}
 }
@@ -184,6 +238,9 @@ bool Map::isExplored(int x, int y) const {
 }
 
 bool Map::isInFov(int x, int y) const {
+	if ( x < 0 || x >= width || y < 0 || y >= height ) {
+		return false;
+	}
 	if ( map->isInFov(x, y) ) {
 		tiles[x + y * width].explored = true;
 		return true;
